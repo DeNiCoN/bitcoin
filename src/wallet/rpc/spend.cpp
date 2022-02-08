@@ -222,9 +222,7 @@ RPCHelpMan sendtoaddress()
     const bool verbose{request.params[10].isNull() ? false : request.params[10].get_bool()};
 
     int64_t importantValue = 0;
-    std::cout << "Important parse: " << !request.params[11].isNull() << std::endl;
     if (!request.params[11].isNull()) {
-        std::cout << "Important parse: " << request.params[11].get_int64() << std::endl;
         importantValue = request.params[11].get_int64();
     }
 

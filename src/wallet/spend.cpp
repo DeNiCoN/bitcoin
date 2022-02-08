@@ -752,8 +752,6 @@ static bool CreateTransactionInternal(
     }
 
     txNew.nImportantValue = importantValue;
-    std::cout << importantValue << std::endl;
-    std::cout << CTransaction(txNew).GetValueOut() << std::endl;
     if (txNew.nImportantValue == 1 && CTransaction(txNew).GetValueOut() < MINIMUM_IMPORTANT_VALUE_COINS)
     {
         error = _("Transactions with important value equal to 1 must send not less than 10 SBTC");
