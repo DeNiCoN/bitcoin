@@ -216,6 +216,15 @@ static void MutateTxLocktime(CMutableTransaction& tx, const std::string& cmdVal)
     tx.nLockTime = (unsigned int) newLocktime;
 }
 
+static void MutateTxImportantValue(CMutableTransaction& tx, const std::string& cmdVal)
+{
+    int64_t newImportantValue;
+    if (!ParseInt64(cmdVal, &newImportantValue))
+        throw std::runtime_error("Invalid TX important value requested: '" + cmdVal + "'");
+
+    tx.nImportantValue = newImportantValue;
+}
+
 static void MutateTxRBFOptIn(CMutableTransaction& tx, const std::string& strInIdx)
 {
     // parse requested index
@@ -705,6 +714,8 @@ static void MutateTx(CMutableTransaction& tx, const std::string& command,
         MutateTxVersion(tx, commandVal);
     else if (command == "locktime")
         MutateTxLocktime(tx, commandVal);
+    else if (command == "importantvalue")
+        MutateTxImportantValue(tx, commandVal);
     else if (command == "replaceable") {
         MutateTxRBFOptIn(tx, commandVal);
     }

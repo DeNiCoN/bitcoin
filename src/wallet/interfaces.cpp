@@ -249,7 +249,7 @@ public:
         CTransactionRef tx;
         FeeCalculation fee_calc_out;
         if (!CreateTransaction(*m_wallet, recipients, tx, fee, change_pos,
-                fail_reason, coin_control, fee_calc_out, sign)) {
+                fail_reason, coin_control, fee_calc_out, sign, 0)) {
             return {};
         }
         return tx;

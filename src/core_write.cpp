@@ -176,6 +176,7 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry,
     entry.pushKV("vsize", (GetTransactionWeight(tx) + WITNESS_SCALE_FACTOR - 1) / WITNESS_SCALE_FACTOR);
     entry.pushKV("weight", GetTransactionWeight(tx));
     entry.pushKV("locktime", (int64_t)tx.nLockTime);
+    entry.pushKV("importantvalue", (int64_t)tx.nImportantValue);
 
     UniValue vin{UniValue::VARR};
 

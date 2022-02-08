@@ -43,6 +43,11 @@ bool CheckTransaction(const CTransaction& tx, TxValidationState& state)
             return state.Invalid(TxValidationResult::TX_CONSENSUS, "bad-txns-inputs-duplicate");
     }
 
+    if (tx.nImportantValue == 1 && tx.GetValueOut() < MINIMUM_IMPORTANT_VALUE_COINS)
+    {
+            return state.Invalid(TxValidationResult::TX_CONSENSUS, "bad-important-value");
+    }
+
     if (tx.IsCoinBase())
     {
         if (tx.vin[0].scriptSig.size() < 2 || tx.vin[0].scriptSig.size() > 100)
