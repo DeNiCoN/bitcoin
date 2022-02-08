@@ -18,6 +18,8 @@ static constexpr int NO_WITNESS_COMMITMENT{-1};
 /** Minimum size of a witness commitment structure. Defined in BIP 141. **/
 static constexpr size_t MINIMUM_WITNESS_COMMITMENT{38};
 
+static constexpr CAmount MINIMUM_IMPORTANT_VALUE_COINS = 10 * COIN;
+
 /** A "reason" why a transaction was invalid, suitable for determining whether the
   * provider of the transaction should be banned/ignored/disconnected/etc.
   */
